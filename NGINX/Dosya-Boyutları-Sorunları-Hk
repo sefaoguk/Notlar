@@ -1,0 +1,11 @@
+// dosyaları upload ederken nginx'in default değeri vardır. Bunu istediğimiz boyuta göre değiştirmek gerekmektedir.
+// Eğer Sunucuyu karşılayan 2. bir nginx varsa orda da aynı şekilde bu değer girilmelidir.
+
+    - client_max_body_size 2G;
+
+
+// Dosya boyutları fazlalaştığı takdirde sunucular arasındaki dosya gönderim, kopyalama işlemleri sistemi yoracak ve zaman alacaktır.
+// Bunun için aşağıdaki komutun kullanılması gerekmektedir. İstemci istek gövdesinin arabelleğe alınmasını  devre dışı bırakır.
+// Detaylı açıklama : http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_request_buffering
+
+    - proxy_request_buffering off;
