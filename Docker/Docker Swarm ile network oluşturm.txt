@@ -1,0 +1,13 @@
+CBS örneğindeki tek bir network çatısı altında farklı serverları birbirleri ile haberleşmesi için gereken adımlar:
+
+1-) İlk olarak networkun hangi ip üzerinde oluşturulacağını öğrenmek gerekmektedir.
+	- ' ip addr show ' komutu ile IP nin nerede olduğuna bakılır. ens160'da olması muhtemel, farklı olabilir.
+
+2-) Sonra aşağıdaki komutu kullanarak bir swarm networku oluşturulur.
+	- docker swarm init --advertise -addr ${ens160}
+
+3-) Bizim ana yönlendiricimiz artık o IP de oluşturulmuş oldu. Sonrasında artık alt makineleri bağlamak için token almamız gerek. Bunun için
+worker
+docker swarm join --token SWMTKN-1-5kbdtmut2e4wfctjptfheah5cfmsvihz2764hgvp4ochxjf909-arl6frgpetvks1g5ppgzlinjf 172.17.31.147:2377 
+manager
+docker swarm join --token SWMTKN-1-5kbdtmut2e4wfctjptfheah5cfmsvihz2764hgvp4ochxjf909-ae50c1gps92g7ol361m52kgla 172.17.31.147:2377 

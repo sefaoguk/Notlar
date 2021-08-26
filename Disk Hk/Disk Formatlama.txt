@@ -1,0 +1,19 @@
+Disklerin hangi formatta formatlandığını gösteren komut
+	- lsblk -f
+
+ext4 Formatında formatlamayı sağlayan komut
+	- sudo mkfs -t ext4 /dev/sdb1
+FAT32 formatında formatlamayı sağlayan komut
+	- sudo mkfs -t vfat /dev/sdb1
+ntfs formatında formatlamayı sağlayan komut
+	- sudo mkfs -t ntfs /dev/sdb1
+
+Bir diski bağlamak için istenilen dizinde dosya açılır. Sonrasında o dizine mount edilmek istenilen disk hangisi ise mount edilir. 
+	- sudo mkdir -p [mountpoint]
+	- sudo mount -t auto /dev/sdb1 [mountpoint]
+
+
+
+
+*** Detaylı bilgi için linke git.
+https://phoenixnap.com/kb/linux-format-disk

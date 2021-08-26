@@ -1,0 +1,12 @@
+ 1- git config --global user.name 'ankageoo' // Aktif edilmesi istenen git hesabının kullanıcı adı girilir
+ 2- git config --global user.email 'ankageoo@gmail.com' // Aktif edilmesi istenen git hesabının maili girilir.
+
+Sonrasında VSCode'dan çıkış yapıp tekrar girilir ve Git-Remode Add ile tarayıcı üzerinde açık olan Aktif edilmesi istenen hesaba girerek
+Kullanıcı değişikliği tamamlanmış olur.
+
+
+NOT: Eğer hala permisson denied hatası alıyorsanız ve VSCode farklı bi git hesabı üzerinden push etmeye çalışıyorsa
+
+	1- Windows başlattan "Credantial Managera" girilir ve ordan "WindowsCredentials" sekmesindeki github ile alakalı credentialleri silinir.
+	2- Sonrasında VSCode yeniden başlatılır. Branch push edilir ve web veya token doğrulaması ile kullanıcı değişikliği tamamlanmış olur
+ 
