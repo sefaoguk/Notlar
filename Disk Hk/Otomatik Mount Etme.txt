@@ -1,0 +1,6 @@
+Sistem yeniden başlatmasında diski görmüyor olabilir. Bunun için 'fstab' dosyanın içerisinde mount komutunu girmek gerekmektedir. 
+UUID, 'lsblk -f' komutu ile ID alınırsa daha sağlam olmaktadır. Sonrasında mountpoint girilerek aşağıdaki komut satırı ile disk mount edilir.
+'sudo reboot' işlemini gerçekleştirdikten sonra 'lsblk' komutu ile kotnrol edebiliriz.
+
+
+UUID=0ec8eaf3-cceb-41d5-be78-ee7703d16363       /media/elasmap/4tb      ext4    defaults        0       0

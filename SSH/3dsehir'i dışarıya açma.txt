@@ -1,0 +1,2 @@
+24.146 olan database sunucusna bağlanır. 0.0.0.0 yapmamızın nedeni istek atan  tüm ipler 5225 portundan 3dsehir sunucusna bağlanabilir. 
+ssh -L 0.0.0.0:5225:172.17.24.146:5432 geo@172.17.31.147

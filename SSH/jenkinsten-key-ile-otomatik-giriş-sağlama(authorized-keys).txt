@@ -1,0 +1,2 @@
+// jenkins sunucusundan .ssh dosyasının içerisine girerek oradaki dosya direk istenilen makineye eklenir.
+ssh-copy-id -i ./id_rsa.pub kgm@192.168.20.200
