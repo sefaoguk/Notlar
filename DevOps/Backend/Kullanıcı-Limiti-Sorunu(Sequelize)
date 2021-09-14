@@ -1,0 +1,15 @@
+// Normal şartlarda sistem çalıştığında ancak 5'den fazla kullanıcı aynı anda işlem yaptığında hata alınabilir. Default olarak pool sayısı 5 atanmaktadır.
+// Bu limiti kaldırdığımızda backend'ten dolayı sistem çökmelerinin ortadan kaldırabiliriz. 
+// Backend'ten kaynaklı sistem çökmelerinde bunu kontrol et... 
+
+const connectionString = `postgres://${POSTGIS_USERNAME}:${POSTGIS_PASSWORD}@${POSTGIS_HOST}:${POSTGIS_PORT}/${POSTGIS_MAINDBNAME}`
+const sequelize = new Sequelize(connectionString, {
+  logging: false,
+  pool: {
+    // default pool sayısı 5 olduğundan SequelizeConnectionAcquireTimeoutError verdi. Çözüm için sayı 20'ye çıkarıldı
+    max: 20,
+    min: 0,
+    acquire: 30000,
+    idle: 10000,
+  },
+});

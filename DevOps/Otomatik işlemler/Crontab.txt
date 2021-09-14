@@ -1,0 +1,15 @@
+
+
+# sudo su ile root dizinine girilir. Sonrasında crontab -e denilerek 1. şık seçilir (nano ile düzenleme isteğe bağlı)
+# bu dosya /var/spool/cron/crontabs/ dizininin içerisindedir. içerisine istenilen komutlar girilir. Baştaki sayılar ne kadar sürede
+# işlem yapmak istendiği belirtilir.
+
+
+# cloud_admin ve cloud_data backuplarını almak için .sh dosyasını çalıştırır.
+30 23 * * * /home/ferrari/db_backup/ferrari_db_backup.sh
+#
+
+# cloud_admin ve cloud_data dosyalarındaki 7 günden fazla olan backupları siler.
+30 23 * * * /usr/bin/find /media/ferrari/SSD_01/DB_BACKUP/cloud_admin/* -mtime +7 -exec rm {} \;
+30 23 * * * /usr/bin/find /media/ferrari/SSD_01/DB_BACKUP/cloud_data/* -mtime +7 -exec rm {} \;
+#
