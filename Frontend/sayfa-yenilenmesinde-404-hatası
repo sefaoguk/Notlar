@@ -1,0 +1,9 @@
+sayfa yenilenmesinde routing modulde değişiklik yapmak gerekiyor.
+NGmodule kısmındaki routes parametresine ek olarak {useHash:true} eklendiğinde sayfa yenilenme sorunu ortadan kalkmakta.
+
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes,{useHash:true})],
+  exports: [RouterModule],
+  providers: [AuthGuardService, AdminAuthGuardService]
+})
