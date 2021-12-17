@@ -1,0 +1,6 @@
+Pgadmindeki database şifresi docker exec ile db containerının içine girilir ve sonrasında psql komutu ile sqle girilir. 
+Sonrasında \password postgres komutu ile db şifre değiştirilir.
+
+
+Bu linkten bakabilirsin.
+https://stackoverflow.com/questions/12720967/how-to-change-postgresql-user-password
