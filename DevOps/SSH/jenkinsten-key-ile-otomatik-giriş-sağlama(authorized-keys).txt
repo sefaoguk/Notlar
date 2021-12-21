@@ -1,2 +1,15 @@
+1. Yöntem
 // jenkins sunucusundan .ssh dosyasının içerisine girerek oradaki dosya direk istenilen makineye eklenir.
-ssh-copy-id -i ./id_rsa.pub kgm@192.168.20.200
+
+    - ssh-copy-id -i ./id_rsa.pub kgm@192.168.20.200
+
+
+
+2.Yöntem 
+// jenkins sunusucununda '/home/jenkins/.ssh/' dizinine girilir ve orada 'id_rsa.pub' dosyası bulunmaktadır. Bu dosyayı karşı tarafta istenilen
+sunucunun '/home/example/.ssh/' dizinin içerisine aktarılır. Sonrasında 'authorized_keys' dosyası oluşturulur ve jenkinsteki id_rsa.pub dosyası
+bu dosyaya aktarılır.
+
+    - cat jenkins_id_rsa.pub >> authorized_keys               
+
+komutu işe yarayacaktır. İşlemi yapmadan önce boş bir dosyada deneyin ya da authorized_keys dosyasının yedeğini alın.
