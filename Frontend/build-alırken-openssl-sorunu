@@ -1,0 +1,12 @@
+
+package.json folderında build alınan yere aşağıdaki şekilde kod yazılır ve yarn build denildiğinde build alınabilmektedir.
+
+{
+  "scripts": {
+    "build": "export NODE_OPTIONS=--openssl-legacy-provider; ng build"
+  }
+}
+
+
+
+https://exerror.com/opensslerrorstack-error03000086digital-envelope-routinesinitialization-error/
