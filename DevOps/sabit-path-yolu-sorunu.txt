@@ -1,0 +1,10 @@
+sh dosyasında belirli bir folderı çalıştırmak istiyorsanız ancak bu dosya farklı bir yerde çalıştığında dosyanın bulunduğu konumu almıyor ise aşağıdaki
+$FOLDER değişkeni ile sorunu çözebilirsiniz. Bu komut dosya neredeyse konumuna göre sabit path yolu vermektedir.
+
+Bu sorunu crontab dosyasına değişken ile ekleme yapmak istediğimde almaktaydım.
+/home/ornek/test/deneme.sh dosyasını /home/ornek dizininde çalıştığında dosyanın içerisindeki .env dosyası bir üst folderda aramak için ayarlandı ancak 
+çalıştırılan locasyon /home/ornek olduğu için .env dosyasını /home/ dizininde aramaktaydı. Bu komut sayesinde bulunduğu locasyonda çalıştırılması sağlandı.
+
+#!/bin/bash
+FOLDER=$(dirname "$(readlink -f "$0")")
+echo $FOLDER
