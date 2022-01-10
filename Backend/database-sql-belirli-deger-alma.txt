@@ -1,0 +1,5 @@
+1- ilk önce komutun çalıştığını görmek için listeleme işlemi yapılır. (SELECT imgname FROM panogps) -> Bu imgname deki tüm sütunu listeler
+                                                                    - (SELECT imgname, substring(imgname,51)) -> bu ise istenilen formatta listeler.
+2- sonrasında yedek olarak yeni bir sütun oluşturulur. 
+3- oluşturulan sutüna değişiklik yapılacaak sütünün verileri update script sekmesinden atılır. (SET imagename2=imagename gibi)
+4- Sonrasında kısaltma işlemi yapılır. (SET imagename=substring(imagename,51,5) gibi) -> burada ilk parametre sütun adı, 2. parametre nereden başlayacağı, 3.satır ise kaç kelime alacağı - uzunluğudur.
