@@ -1,0 +1,13 @@
+1-) İlk önce rename paketi indirilir.
+  
+      - sudo apt install rename
+
+2-) Sonrasında komutu çalıştırılır. Buradaki komut -n işlemin listelenmesini ve yapılmamasını sağlamaktadır. "-n" parametresi silindiği zaman işlem gerçekleşecektir.
+    .{5} olan kısım nereden kesilmeye başlayacağını belirtmektedir. $1 olan kısım ise değişkendir orası var olan 
+
+          - rename -n 's/.{5}(.*)/$1/' *
+ 
+ 
+ 
+ 
+ 
