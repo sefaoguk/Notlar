@@ -1,0 +1,7 @@
+bilgisayarlarda iki farklı ip tanımlı olabiliyor. Bundan dolayı hangisine swarm oluşturulacağını belirlemek gerekmektedir. 
+Hızlı çözüm olarak localdeki iplere swarm yapılması sağlanılabilir. Ancak bu durum bir kaç sunucu değil de tek bir sunucu da uygulamalar
+bulunacaksa kullanılması daha doğru olacaktır. Bir kaç sunucu var ise özel olarak bu işlemin yapılması gerektiğini düşünüyorum
+
+- docker swarm init --advertise-addr 127.0.0.1
+
+Anladığım kadarı ile bu komut localdeki tüm iplere swarm networku oluşturmaktadır.
