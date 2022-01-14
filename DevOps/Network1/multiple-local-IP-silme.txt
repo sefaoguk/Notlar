@@ -11,3 +11,10 @@ umuyorum.
 
 - sudo ip addr flush 192.168.20.xx dev eth0   ya da
 - sudo ip addr flush 192.168.20.xx            varyantlarını deneyebilirsiniz.
+
+
+**** IP ADDR FLUSH NEDIR: *****
+ip adresi temizleme - protokol adreslerini temizleme.
+Bu komut, bazı kriterlere göre seçilen protokol adreslerini temizler.
+Bu komut, show ile aynı argümanlara sahiptir.
+Aradaki fark, hiçbir argüman verilmediğinde çalışmamasıdır.
