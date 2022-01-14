@@ -1,0 +1,13 @@
+docker swarm yapılmak istendiğinde birden fazla local IP tanımlı olabilir. Eğer bunu kendiniz oluşturmadıysanız bunu çözmenin iki yolu vardır
+
+ister istediğiniz IP'yi seçerek oraya swarm oluşturup devam edersiniz ya da var olan ve kullanmadığını local IP'nin birini silebilirsiniz.
+
+Var olan local IP'yi silmek için
+
+- sudo ip addr del 192.168.20.xx dev eth0 
+
+komutunu kullanabilirsiniz. Ancak bunun işe yaramadığı durumlar olabiliyor. Bu komutu uygun doldurduktan sonra çalışmadığı takdirde aşağıdaki komut çalışacağını 
+umuyorum.
+
+- sudo ip addr flush 192.168.20.xx dev eth0   ya da
+- sudo ip addr flush 192.168.20.xx            varyantlarını deneyebilirsiniz.
