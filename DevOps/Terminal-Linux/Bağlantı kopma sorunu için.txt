@@ -1,0 +1,3 @@
+SSH ile dosya gönderimi yaparken timeout olunması durumunda bu sitedeki dosya düzenlemeleri yapılır.
+
+https://www.simplified.guide/ssh/disable-timeout

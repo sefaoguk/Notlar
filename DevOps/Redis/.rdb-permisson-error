@@ -1,0 +1,8 @@
+Service ya da container root olarak ayağa kalkmalı. .rdb dosyasının izni yetersiz kaldığı için hata vermekte. 
+İlk önce ben port bilgisini değiştirerek çözmüştüm ancak başka port ile dışarı açıldıktan 1-2 hafta sonra tekrar bozuldu.
+Ondan dolayı içerisine girip /data klasörünün altındaki dump.rdb dosyasına tüm izinleri verdim. 
+
+Aşağıdaki linkte de service-container ayağa kalkarken root izni verildiği görünüyor.
+
+
+https://stackoverflow.com/questions/54314795/redis-permission-denied-while-opening-dump-rdb

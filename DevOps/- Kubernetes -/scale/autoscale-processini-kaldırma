@@ -1,0 +1,10 @@
+Deployment'daki bir uygulamamızı bir nedenden ötürü autoscale yapmış olabilir. Ancak sonrasında bu durumu bir nedenden dolayı scale'e çekmek isteyebiliriz.
+Normal olarak kubectl scale komutu girildiğinde istenilen deploymentdaki uygulama bir anlığına istediğiniz replicada bulunacak ancak sonrasında yine
+autoscale processini devreye sokarak ilk olarak tanımladığınız autoscale parametreleri ile devam edecektir.
+
+Bunu düzeltmenin yolu ilk olarak autoscale processini arkadan silmektir.
+
+    - kubectl delete hpa ${deployment-name}
+
+bu sayede arkadaki autoscale processi kaldırılacaktır. Sonrasında yine kubectl scale komutunu kullanarak istediğiniz replicayı verebilirsiniz. Bundan sonra
+vereceğiniz replica parametresi otomatik kendini düşürüp kaldırmayacaktır.

@@ -1,0 +1,5 @@
+Bu komut bulunan dizindeki .jpg uzantılı dosyaları .jpeg formatına dönüştürmektedir.
+	- for f in *.jpg; do mv -- "$f" "${f%.jpg}.jpeg"; done
+
+Bu komut, mount edilmemiş diski mount etmeye yarar. Csbde kullanılmışdır
+	- sudo mount -t ntfs -o rw /dev/sdb1 /media/4tb

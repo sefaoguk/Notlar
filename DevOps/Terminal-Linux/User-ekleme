@@ -1,0 +1,13 @@
+
+
+Öncelikle user eklmek için aşağıdaki komutlar girilir ve istenilen değerler girilir. Zorunlu değildir.
+    -   adduser ${user_name}
+
+sonrasında işlem tamamlanmış olacak ancak permission hatası alınacaktır. Bunun aşağıdaki komut satırına userımızı eklmememiz gerekecektir.
+
+    - sudo nano /etc/sudoers
+    - ${user_name} ALL=(ALL)  ALL
+Aşağıdaki iki video yardımcı olacaktır. 1. video user ekleme 2. video ise çıkan permission hatasını çözmek için yeterlidir.
+
+https://www.youtube.com/watch?v=COp6JtP45o8
+https://stackoverflow.com/questions/47806576/linux-username-is-not-in-the-sudoers-file-this-incident-will-be-reported
