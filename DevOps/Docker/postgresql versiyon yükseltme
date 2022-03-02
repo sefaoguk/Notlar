@@ -1,0 +1,29 @@
+10 olan postgres versiyonumuzu 13e çıkaracağız. Bu işlem şu şekilde olacaktır:
+
+ - ilgili database containerımızın içerisine girerek postgres çalışan servisimizi durdurmamız gerekiyor.
+ - Service durdurulduktan sonra postgresinn istenen versiyonunun yüklenmesi gerekmektedir.
+ - Versiyon yüklendikten sonra eski versiyonun yayın pathi ve portu değiştirilir.
+ - Yeni versiyon yayında olan path dizinine bağlanarak service tekrar başlatılır.
+ 
+
+
+Bunun için ilk önce database containerının içerisine girilir.
+ - docker exec -ti appdb.1fgsfwerrfvfds bash 
+
+Containera giriş sağladıktan sonra postgres servicein durdurulması gerekmektedir.
+ - service postgresql stop
+    NOT: Burada hata çıkma olasılığı vardır. Servisi tanıyamamış olabilir.Bunun için aşağıdaki komutları ilk önce araştırın ondan sonra hatanızla eşleşiyor ise
+    uygulayın Bunun için "su postgres" yazılarak postgresql içerisine girilir sonrasında:
+    
+        - locale -a
+        - less /usr/share/i18n/SUPPORTED
+        - locale-gen en_US.UTF-8
+        - locale -a
+    
+    bu komutlar yazılır. Bu komutları yazdıktan sonra çıkış yapıılır. Sonrasında "service postgresql stop" komutunu deneyin. Tekrar hata olması ve 
+        
+        "[warn] No PostgreSQL clusters exist; see "man pg_createcluster" ... (warning). " 
+
+    yukarıdaki hatayı almanız durumunda "pg_createcluster ${10} main" çalışan versiyonunuzu belirtmeniz gerekebilir. Mevcut versitonunuzu yazarak tırnak içerisindeki
+    kodu değiştirin. Kodu çalıştırdığınızda servisin artık start-stop olması gerekmektedir.
+
