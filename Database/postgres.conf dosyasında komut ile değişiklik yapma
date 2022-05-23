@@ -1,0 +1,12 @@
+Sunucuda root dizinine geçilir. Sonrasında 'su postgres' komutu ile postgres userına geçiş yapılır. psql yazılarak database içerisine girilmesi sağlandıktan sonra
+gerekli komutlar yazılır. Sonrasında postgres service restart edilir ve istenilirse değiştirilen yer control edilebilir.
+
+
+
+- sudo su
+- su postgres
+- psql
+- ALTER SYSTEM SET max_connections=300;
+
+
+- SHOW max_connections

@@ -1,0 +1,10 @@
+Database ile ilgili container içerisine postgres userı ile giriş yapılır. Sonrasında komut satırına psql yazılarak databasein içersiine girilir.
+İçerisine girildikten sonra 'ALTER_SYSTEM SET' komutu ile sistemde değişiklik yapılmasını istenen değişken girilerek değer verilir. Sonrasında çıkılarak container restart
+edilir. Tekrar girip 'SHOW max_connections' denildiğinde işe yaradığı görülecektir. 
+
+- docker exec -ti -u postgres {container_name} bash
+- postgres#/: psql  
+- ALTER SYSTEM SET max_connections=300;
+
+
+- SHOW max_connections
