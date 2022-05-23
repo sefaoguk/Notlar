@@ -1,0 +1,4 @@
+Linuxda node versiyon hatası alınırsa ilk önce node indirip sonra o node kullanılmalıdır. Bunun için 2 komut vardır.
+
+- sudo n i {13.0.0}
+- sudo n {13.0.0}

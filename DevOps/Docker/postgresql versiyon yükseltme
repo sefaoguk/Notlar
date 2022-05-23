@@ -19,7 +19,12 @@ Containera giriş sağladıktan sonra postgres servicein durdurulması gerekmekt
         - less /usr/share/i18n/SUPPORTED
         - locale-gen en_US.UTF-8
         - locale -a
+
+        bunlar işe yaramaz ise root dizinindeki komut satırına
+        - export LANGUAGE=en_US.UTF-8
+        - export LC_ALL=C
     
+        komutlarını yazabilirsiniz.
     bu komutlar yazılır. Bu komutları yazdıktan sonra çıkış yapıılır. Sonrasında "service postgresql stop" komutunu deneyin. Tekrar hata olması ve 
         
         "[warn] No PostgreSQL clusters exist; see "man pg_createcluster" ... (warning). " 

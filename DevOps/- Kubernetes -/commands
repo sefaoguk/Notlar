@@ -1,0 +1,7 @@
+1-) explain : istenilen objenin ne işe yaradığını anlatan dökümanı çıkartır. --help komutu bir fiilin açıklamasını gösterirken 
+                explain ise bir objenin açıklamasını göstermektedir.
+                * - kubectl explain pods * 
+
+
+
+                

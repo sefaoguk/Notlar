@@ -1,0 +1,3 @@
+- kubectl get events 
+ 
+ komutu tüm podslardaki kırılmaları gösterir. Hangi pod neyden dolayı hata alıp öldüğünü gösterir.

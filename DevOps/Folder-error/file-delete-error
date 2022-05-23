@@ -1,0 +1,9 @@
+ana dizindeki swapfile silinmeme sorunu olabilmektedir. Hata çıktısı olarak : 
+
+rm: cannot remove 'swapfile': Operation not permitted
+
+şeklinde bir hata alınabilir. Bunun için swapoff komutu kullanılmaldıır. swapoff komutundan sonra dosya adı yazılarak işlem tamalanır.
+
+- swapoff swapfile
+
+komut yazıldıktan sonra dosya silinebilir hale gelmiştir.

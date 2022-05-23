@@ -1,0 +1,17 @@
+ 1988  sudo apt-get update
+ 1989  sudo apt-get install -y apt-transport-https ca-certificates curl
+ 1990  sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+ 1991  echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+ 1992  sudo apt-get update
+ 1993  sudo apt-get install -y kubectl
+
+        - sudo apt install snapd
+        - snap install kubectl --classic
+        
+
+
+ 1994  kubectl version --client
+ 1995  kubectl cluster-info
+ 1996  kubectl cluster-info dump
+ 1997  echo 'source <(kubectl completion bash)' >>~/.bashrc
+ 1998  exit

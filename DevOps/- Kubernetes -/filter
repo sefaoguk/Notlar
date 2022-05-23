@@ -1,0 +1,7 @@
+Pods lardaki çıktıyı filtrelemek isteyebiliriz. Bunun için grep yerine
+
+- kubectl get pods -A -o json | jg -r ".items[].sepc.containers[].name"
+
+Bu işlem json formatında bir çıktı olduğu için istenilen değerleri döndürülmesini sağlar.
+istenilen dizindeki container isimlerinin hepsini getirir.
+
