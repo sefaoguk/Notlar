@@ -1,0 +1,12 @@
+kullanıcının izileri ile oynanmış olabilir. Bundan dolayı "sudo su" komutunu çalıştırdığınızda 
+
+- admin01 is not in the sudoers file. This incident will be reported.
+
+hatası alabilirsiniz. Bunun çözümü için ilk önce root userını belirterek roota erişmeniz. Eriştikten sonra /etc/sudoers dosyasında mevcut kullanıcınıza izin vermektir.
+
+
+- su root
+- nano /etc/sudoers
+- username ALL=(ALL) ALL
+
+bu işlemleri gerçekleştirdiğinizde sudo su komutu ile root dizinine erişim sağlanılabilir.
