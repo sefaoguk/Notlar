@@ -1,0 +1,106 @@
+    const workbook = new ExcelJS.Workbook();
+    const worksheet = workbook.addWorksheet('TAPUDA KAYITLI TAŞINMAZLAR', { pageSetup: [{ showGridLines: true }] });
+    let count = 1
+    let rowCount = 1;
+
+    // Columnların ana başlıkları ve verilerin geleceği ilgili column  burada key'ler ile belirlenir.
+    worksheet.columns = [
+        { header: `Sıra No`, key: 'sira', width: 10 },
+        { header: 'TAKBİS Zemin No', key: 'takbis', width: 20 },
+        { header: 'Taşınmaz No', key: 'tasinmaz', width: 20 },
+        { header: 'İl', key: 'il', width: 20 },
+        { header: 'İlçe', key: 'ilce', width: 20 },
+        { header: 'Mahalle/Köy', key: 'mahalle', width: 20 },
+        { header: 'Ada No', key: 'ada_no', width: 20 },
+        { header: 'Parsel No', key: 'parsel_no', width: 20 },
+        { header: ['Cilt No', 'Sayfa No', 'Sıra No'], key: 'cilt_no', width: 20 },
+        { header: 'Yüzölçümü (m2)', key: 'yuz_olcumu', width: 20 },
+        { header: 'Pay Oranı', key: 'pay_orani', width: 20 },
+        { header: 'Cinsi', key: 'cinsi', width: 20 },
+        { header: 'Mevcut Kullanım Şekli', key: 'mevcut_kullanim_sekli', width: 30 },
+        { header: 'Mevcut Kullanım Kodu', key: 'mevcut_kullanim_kodu', width: 30 },
+        { header: 'Edinme', key: 'edinme_sekli', width: 20 },
+        { header: 'Edinme', key: 'edinme_tarihi', width: 20 },
+        { header: ['Maliyet Bedeli', 'Rayiç Bedeli', 'İz Bedeli', 'Emlak V.D', 'Arsa Değeri'], key: 'maaliyet_bedeli', width: 20 },
+        { header: ['Maliyet Bedeli', 'Rayiç Bedeli', 'İz Bedeli', 'Emlak V.D', 'Bina Değeri'], key: 'maaliyet_bedeli2', width: 20 },
+        { header: 'Kayıtlardan Çıkış', key: 'kayit_cikis_nedeni', width: 20 },
+        { header: 'Kayıtlardan Çıkış', key: 'kayit_cikis_tarihi', width: 20 },
+        { header: 'Açıklamalar', key: 'aciklamalar', width: 20 },
+    ];
+
+    rowMergeCells(worksheet, rowCount)
+    // Tek bir sütunu, birden fazla satır olacak şekilde düzenlenmesi için Array tanımlanmıştır.
+    const ciltNoValues = ['Cilt No', 'Sayfa No', 'Sıra No', 'Sıra No', 'Sıra No']
+    const maliyetBedeli = ['Maliyet Bedeli', 'Rayiç Bedeli', 'İz Bedeli', 'Emlak V.D', 'Arsa Değeri']
+    const maliyetBedeli2 = ['Maliyet Bedeli', 'Rayiç Bedeli', 'İz Bedeli', 'Emlak V.D', 'Bina Değeri']
+
+    // Datalar yazdırılmıştır.
+    for (const data of tableData) {
+        const rows = [{
+            sira: count,
+            takbis: data.takbis_zemin_no,
+            tasinmaz: data.tasinmaz_no,
+            il: data.il,
+            ilce: data.ilce,
+            mahalle: data.mahalle,
+            ada_no: data.ada_no,
+            parsel_no: data.parsel_no,
+            yuz_olcumu: data.yuzolcumu,
+            pay_orani: data.pay_orani,
+            cinsi: data.cinsi,
+            mevcut_kullanim_sekli: data.mevcut_kullanim_sekli,
+            mevcut_kullanim_kodu: data.mevcut_kullanim_kodu,
+            edinme_sekli: data.edinme_sekli,
+            edinme_tarihi: data.edinme_tarihi,
+            kayit_cikis_nedeni: data.kayit_cikis_nedeni,
+            kayit_cikis_tarihi: data.kayit_cikis_tarihi,
+            aciklamalar: data.aciklamalar
+        }]
+        worksheet.addRows(rows);
+        // Satır ve sütunların birleştirilmesi (merge) işlemi için sayaç tanımlanmıştır ve mevcut-şu anki var olan sayaç üzerinden merge işlemi yapılmaktadır.
+        rowCount = worksheet.rowCount
+        rowMergeCells(worksheet, rowCount)
+
+        // Sütunların birleştirilmesinden sonra değerlerinin yazılması için bu yöntem ile tek bir array pushlanmıştır.
+        ciltNoValues.push(data.cilt_no, data.sayfa_no, data.sira_no1, data.sira_no1)
+        maliyetBedeli.push(data.maliyet_bedeli, data.rayic_bedeli, data.iz_bedeli, data.arsa_degeri)
+        maliyetBedeli2.push(data.maliyet_bedeli, data.rayic_bedeli, data.iz_bedeli, data.bina_degeri)
+        count++;
+    }
+
+    // Pushlanmış olan array, aşağıdaki keylere bağlanarak değerler aktarılmıştır.
+    const ciltNoColumn = worksheet.getColumn('cilt_no')
+    const maliyetColumn = worksheet.getColumn('maaliyet_bedeli')
+    const maliyetColumn2 = worksheet.getColumn('maaliyet_bedeli2')
+    maliyetColumn.values = maliyetBedeli;
+    maliyetColumn2.values = maliyetBedeli2;
+    ciltNoColumn.values = ciltNoValues;
+
+    
+    let columnCount = worksheet.columnCount
+    while (0 < columnCount) {
+        // İçeriklerin ortalanması için sütunlar middle ve center olarak ayarlandı
+        worksheet.getColumn(columnCount).alignment = { horizontal: 'center', vertical: 'middle' }
+        columnCount--;
+        if (columnCount < 6) {
+            // Exceldeki başlıkların kalın olması için sütun sayısı 6nın altına düşünce aşağıadki kalınlaştırma işlemlerini yapmaktadır.
+            worksheet.getRow(columnCount).font = { bold: true, }
+            worksheet.getRow(columnCount).border = {
+                top: { style: 'thick' },
+                left: { style: 'thick' },
+                right: { style: 'thick' },
+                bottom: { style: 'thick' },
+            }
+        }
+    }
+    // Aynı parçalı sütuna yapılan işlemler burada da yapılmıştır.
+    const edinmeSekli = worksheet.getColumn('edinme_sekli');
+    const edinmeTarihi = worksheet.getColumn('edinme_tarihi');
+    const kayitCikisNeden = worksheet.getColumn('kayit_cikis_nedeni');
+    const kayitCikisTarih = worksheet.getColumn('kayit_cikis_tarihi');
+    edinmeSekli.header = ['Edinme', 'Edinme', 'Şekil'];
+    edinmeTarihi.header = ['Edinme', 'Edinme', 'Tarihi'];
+    kayitCikisNeden.header = ['Kayıtlardan Çıkış', 'Kayıtlardan Çıkış', 'Nedeni']
+    kayitCikisTarih.header = ['Kayıtlardan Çıkış', 'Kayıtlardan Çıkış', 'Tarihi']
+
+    await workbook.xlsx.writeFile(path + 'excel-type-2.xlsx');

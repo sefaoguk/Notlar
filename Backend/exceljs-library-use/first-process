@@ -1,0 +1,3 @@
+# excel dosyası oluşturulurken exceljs import edildikten sonra öncelikle workbook ve worksheet oluşturulmalıdır. 
+# workbook excel dosyasının oluşturulmasını sağlarken worksheet ise içerisindeki sekmelerin oluşmasını sağlamaktadır.
+# Bu işlemlerden sonra column ve rowlar oluşrulmak üzere devam edilir.
