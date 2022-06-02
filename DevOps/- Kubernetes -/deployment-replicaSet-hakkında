@@ -1,0 +1,4 @@
+
+
+Kubernetesde biz podları deployment yerine replicaSet ile de oluşturabilirz ancak replicaSet bize Deploymentın sunmuş olduğu kolaylıkları sunmamakta.
+(rollout undo gibi.) Bundan dolayı biz deployment'ı oluştururz ve deploymentımız kendisi replicaSet'i oluşturarak yapının daha düzgün çalışmasını sağlar.

@@ -1,0 +1,34 @@
+React uygulaması oluşturulduktan sonra çalıştırıldığında hata alınabilir. Hatanın aşağıdaki gibi olduğu durumda komut satırlarını girerek çözebiliriz.
+
+
+***************************************
+Running application on PGN518.
+internal/fs/watchers.js:173
+   throw error;
+   ^
+
+Error: ENOSPC: System limit for number of file watchers reached, watch '/home/badis/Desktop/react-native/albums/node_modules/.staging'
+   at FSWatcher.start (internal/fs/watchers.js:165:26)
+   at Object.watch (fs.js:1253:11)
+
+****************************************
+
+
+
+
+
+
+# insert the new value into the system config
+- echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+
+# check that the new value was applied
+- cat /proc/sys/fs/inotify/max_user_watches
+
+# config variable name (not runnable)
+- fs.inotify.max_user_watches=524288
+
+
+
+
+# Çözüm linki
+https://stackoverflow.com/questions/55763428/react-native-error-enospc-system-limit-for-number-of-file-watchers-reached

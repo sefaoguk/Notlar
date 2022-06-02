@@ -1,0 +1,8 @@
+Belirli bir numara aralığındaki dosyaları taşımak,kopyalamak,silmek,listelemek gibi işlemler yapılmak istenebilir.
+
+Bunun için aşağıdaki komut kullanılır.
+    
+    - cp {0..337}.jpeg   folder_name/
+    - mv {0..337}.jpeg   folder_name/
+    - rm sil_{1..49}.pdf 
+    - ll {40..100}.png

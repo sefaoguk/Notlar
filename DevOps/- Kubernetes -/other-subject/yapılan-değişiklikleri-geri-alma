@@ -1,0 +1,4 @@
+
+Bir image güncellendiğinde ya da replica değişmesi vs. gibi bir çok değişiklikten vazgeçilmesi için aşağıdaki komut ile sorunsuz ve kolay şekilde geri alınabilri.
+
+- kubectl rollout undo deployment {deployment_name}
