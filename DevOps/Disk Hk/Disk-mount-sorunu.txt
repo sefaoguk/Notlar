@@ -16,3 +16,8 @@ Processleri öldürmek için :
 
 Bu işlemlerden sonra system otomatik kapanacaktır. Sistem açıldıktan sonra tekrar reboot atıp telnet ile kontrol edebilirisniz. Sonrasında istenilen dizine mount
 etme işlemi gerçekleşecektir.
+
+
+Ilgili kaynak buradadır:
+
+https://askubuntu.com/questions/578628/how-to-check-what-are-using-the-mounted-disk-when-i-want-to-eject-it
