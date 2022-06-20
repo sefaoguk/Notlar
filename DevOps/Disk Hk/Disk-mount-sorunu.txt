@@ -1,0 +1,18 @@
+Bu sorunu linuxda fstabda otomatik mount etme işleminde aldık. Fstab uzun süre düzgün şekilde çalıştıktan sonra sistemden kaynaklı bir süreçte yeniden başlatmada
+otomatik olarak diski istenilen dizine yerleştiremeyebilir. Bu esnada diski manuel olarak mount etmek istediğimizde diskin yine de takılmadığını ve mount işleminden
+sonra terminale hata düşmediğini görebiliriz. Ancak farklı bir dizine mount etmek istediğinizde mount işlemi gerçekleşecektir.
+
+Anlaşılan o ki fstab'a eklenilen dizin arkaplanda kendini kullanıyor ve bu yüzden oraya yeni bir mount işlemi yapılamayabiliyor. Bundan dolayı o dizine bağlı tüm 
+processleri öldürmek gerekmektedir. 
+
+Processleri listelemek için: 
+    - sudo fuser -mv /media/SDD
+
+Processleri öldürmek için : 
+    - sudo fuser -mvki /path/dizini
+
+    Buradaki 'i' tektek silinmesini sağlamaktadır. İstenilirse 'i' parametresi kaldırılarak processler komple temizlenenbilir.
+
+
+Bu işlemlerden sonra system otomatik kapanacaktır. Sistem açıldıktan sonra tekrar reboot atıp telnet ile kontrol edebilirisniz. Sonrasında istenilen dizine mount
+etme işlemi gerçekleşecektir.
