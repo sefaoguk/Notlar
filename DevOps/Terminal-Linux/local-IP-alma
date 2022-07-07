@@ -1,0 +1,7 @@
+
+
+Bu komut sadece sunucunun ip adresini alarak istenilen işlemin yapılmasına olanak sağlar. ilgili döküman aşağıdaki linkte detaylıca anlatılmıştır.
+ - hostname -I | cut -d' ' -f1
+
+
+https://stackoverflow.com/questions/13322485/how-to-get-the-primary-ip-address-of-the-local-machine-on-linux-and-os-x
