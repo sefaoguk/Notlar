@@ -1,0 +1,8 @@
+
+
+- HISTTIMEFORMAT="%d/%m/%y %T "
+- echo 'export HISTTIMEFORMAT="%d/%m/%y %T "' >> ~/.bash_profile
+
+./bash_profile dosyanın içerisinde 'source ~/.bash_profile' komutunu girin ve sonrasında çalışacaktır. History komutu ile tarihli list yapabilirsiniz.
+
+https://www.cyberciti.biz/faq/unix-linux-bash-history-display-date-time/
