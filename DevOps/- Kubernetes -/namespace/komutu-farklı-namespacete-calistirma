@@ -1,0 +1,7 @@
+Kubernetes ilk kurulduğunda pod'lar oluşturulmadığı için no resources hatası alınabilir. Bunun nedeni mevcut default namespacete pod olamamsıdır.
+İstenilirse kontrol için ya da farklı bir namespacete işlem yapmak için komutlarımızı çalıştırabilir. Bunun için komutun sonuna ek bir parametre gelmektedir.
+
+
+ - kubectl get pods -n kube-system
+
+ Yukarıdaki komut buna örnek olabilir.

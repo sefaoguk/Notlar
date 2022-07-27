@@ -1,17 +1,60 @@
- 1988  sudo apt-get update
- 1989  sudo apt-get install -y apt-transport-https ca-certificates curl
- 1990  sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
- 1991  echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
- 1992  sudo apt-get update
- 1993  sudo apt-get install -y kubectl
-
-        - sudo apt install snapd
-        - snap install kubectl --classic
-        
+KUBERNETES KURULUM 
 
 
- 1994  kubectl version --client
- 1995  kubectl cluster-info
- 1996  kubectl cluster-info dump
- 1997  echo 'source <(kubectl completion bash)' >>~/.bashrc
- 1998  exit
+STEP 1 - DOCKER INSTALL
+
+- apt-get update && apt-get install -y curl apt-transport-https
+- curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+- cat <<EOF >/etc/apt/sources.list.d/docker.list
+  deb https://download.docker.com/linux/$(lsb_release -si | tr '[:upper:]' '[:lower:]') $(lsb_release -cs) stable 
+  EOF
+
+## Eğer yukarıdaki komut çalışmazsa sunucuda versiyon bulunmadığından dolayı indirememiştir. Bunun için aşağıdaki linkten gerekli versiyonları indirebilirsiniz.
+
+- sudo apt install apt-transport-https ca-certificates curl software-properties-common
+- curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+- sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+
+
+- apt-get update && apt-get install -y docker-ce=18.03.1~ce~3-0~ubuntu
+
+
+
+STEP 2 - KUBERNETES INSTALL :
+
+- curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+- cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
+deb http://apt.kubernetes.io/ kubernetes-xenial main
+EOF
+  
+- apt-get update
+- apt-get install -y kubeadm=1.11\* kubectl=1.11\* kubelet=1.11\* kubernetes-cni=0.7\*
+
+
+
+STEP 3 - CONFIGURE THE HOST
+- swapoff -a // fstab haricinde ne işe yarar bak
+
+
+STEP 4 - CREATE CLUSTER
+- kubeadm init --kubernetes-version stable-1.11 --token-ttl 0 --pod-network-cidr=192.168.0.0/16
+
+
+STEP 5 -INSTALL THE KUBECTL CREDS AND UNTAİNT THE CLUSTER
+- mkdir -p $HOME/.kube
+- sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+- sudo chown $(id -u):$(id -g) $HOME/.kube/config
+- kubectl taint nodes --all node-role.kubernetes.io/master-
+
+
+STEP 6 - ADD OVERLAY NETWORK
+- kubectl apply -f https://docs.projectcalico.org/v2.6/getting-started/kubernetes/installation/hosted/kubeadm/1.6/calico.yaml
+
+
+
+
+---- DOCKER - ce versionları için göz  atın
+
+https://unix.stackexchange.com/questions/363048/unable-to-locate-package-docker-ce-on-a-64bit-ubuntu
+
+
