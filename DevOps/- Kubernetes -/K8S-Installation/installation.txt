@@ -1,0 +1,53 @@
+KUBERNETES KURULUM 
+
+
+STEP 1 - DOCKER INSTALL
+
+- apt-get update && apt-get install -y curl apt-transport-https
+- curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+- sudo cat <<EOF >/etc/apt/sources.list.d/docker.list
+deb https://download.docker.com/linux/$(lsb_release -si | tr '[:upper:]' '[:lower:]') $(lsb_release -cs) stable 
+EOF
+
+## Eğer yukarıdaki komut çalışmazsa sunucuda versiyon bulunmadığından dolayı indirememiştir. Bunun için aşağıdaki linkten gerekli versiyonları indirebilirsiniz.
+
+- sudo apt install apt-transport-https ca-certificates curl software-properties-common
+- curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+- sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+
+
+## Öncelikle docker.io indirmeyi denenmelidir.
+- apt-get install docker.io
+- apt-get update && apt-get install -y docker-ce=18.03.1~ce~3-0~ubuntu
+
+
+
+STEP 2 - KUBERNETES INSTALL :
+
+- curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+- cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
+deb http://apt.kubernetes.io/ kubernetes-xenial main
+EOF
+  
+- apt-get update
+- apt-get install -y kubeadm kubectl kubelet kubernetes-cni
+
+
+
+STEP 3 - CONFIGURE THE HOST
+- swapoff -a // fstab haricinde ne işe yarar bak
+
+
+STEP 4 - CREATE CLUSTER
+- kubeadm init --token-ttl 0 --pod-network-cidr=192.168.0.0/16
+
+
+STEP 5 -INSTALL THE KUBECTL CREDS AND UNTAİNT THE CLUSTER
+- mkdir -p $HOME/.kube
+- sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+- sudo chown $(id -u):$(id -g) $HOME/.kube/config
+- kubectl taint nodes --all node-role.kubernetes.io/master-
+
+
+STEP 6 - ADD OVERLAY NETWORK
+- kubectl apply -f  overlay_k8s_sf4.yaml
