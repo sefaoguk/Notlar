@@ -1,0 +1,27 @@
+Docker-compose ile uygulamaları ayağa kaldırırken geoserverda database IP si'nin sabit olması gerekmektedir. Bunun için network ile container IP'si aşağıdaki
+şekilde sabitlenebilir. 
+
+Öncelikle compose-file içerisine global bir network tanımlanır. Bu network içerisinde containerlara tek tek istenilen IP verilir. 
+Tüm uygulamaların çalışması için aynı subnet üzerinden tanımlanmış olmalıdır.
+
+
+ÖRNEK COMPOSE FILE
+
+db:
+    env_file: docker/.env-non-dev
+    image: geoanka/superset-postgres:traffic
+    container_name: superset_db
+    restart: unless-stopped
+    volumes:
+      - /media/elasmap/4tb/trafik/postgis_appdb:/var/lib/postgresql/data
+    ports:
+      - 5440:5432
+    networks:
+      customnetwork:
+        ipv4_address: 172.24.0.2
+networks:
+  customnetwork:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.24.0.0/16
