@@ -1,2 +1,5 @@
-Belirli bir column listeleme:
-    -  SELECT 'column_name' FROM 'table_name' ;
+1- Belirli bir column listeleme:
+        -  SELECT 'column_name' FROM 'table_name' ;
+
+2- Belirli bir column'un hangi table'larda olduğunu listeleme: 
+        - SELECT TABLE_SCHEMA, TABLE_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE COLUMN_NAME = 'created_by';
