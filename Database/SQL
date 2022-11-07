@@ -1,0 +1,2 @@
+Belirli bir column listeleme:
+    -  SELECT 'column_name' FROM 'table_name' ;
