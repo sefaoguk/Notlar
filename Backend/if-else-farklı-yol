@@ -1,0 +1,4 @@
+         return queryInterface.addColumn(tableName, columnInfo.name,
+                {
+                    type: columnInfo.type ? columnInfo.type : columnInfo.typeName
+                })
