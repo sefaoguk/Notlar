@@ -1,0 +1,2 @@
+for d in */ ; do rsync "$d"panogps.txt /media/4tb/OSB/zart/$d ; done
+
