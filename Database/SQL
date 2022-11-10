@@ -3,3 +3,8 @@
 
 2- Belirli bir column'un hangi table'larda olduğunu listeleme: 
         - SELECT TABLE_SCHEMA, TABLE_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE COLUMN_NAME = 'created_by';
+
+3- Belirli bir columndaki tüm değerleri değiştirme komutu: 
+         (Bu komutun çıktısında birden fazla SQL komutu olacaktır. O komutları toplu şekilde çalıştırdığınızda istenilen değişim elde edilecektir.)
+         - select 'UPDATE ' || t.table_schema || '.' || '"' || t.table_name || '" SET ' || t.column_name || ' = 1' || ' WHERE touch_by = 995;' as script --, 
+                t.* from information_schema."columns" t where table_schema = 'public' and column_name = 'touch_by';
