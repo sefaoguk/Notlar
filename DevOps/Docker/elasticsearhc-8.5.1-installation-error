@@ -1,0 +1,4 @@
+Elastic search'ü ayağa kaldırırken belirli bir kaç hata vardır. Bunlardan birisi javadır. Javanın bilgisayarda yüklü olması gerekmektedir.(jdk-11)
+Diğer bir sorun ise limit sorunudur (anladığım kadarıyla)
+Bu linkte daha detaylı anlatılmıştır.
+https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html#_set_vm_max_map_count_to_at_least_262144
