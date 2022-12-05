@@ -1,0 +1,8 @@
+https://dba.stackexchange.com/questions/33943/granting-access-to-all-tables-for-a-user     -> ilgili link
+
+Database user değiştirme işlemleri sırasında eski userdaki yekiler yenilerinde olmayabilr.
+
+GRANT ALL PRIVILEGES ON DATABASE $database_name TO $user_name;            -> database user izin
+GRANT ALL PRIVILEGES ON TABLE IN $table_name TO $user_name;               -> tek bir tabledaki user izin
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA $schema_name TO $user_name;  -> schema içerisindeki tüm tablelardaki izin
+
