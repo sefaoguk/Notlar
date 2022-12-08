@@ -1,0 +1,8 @@
+
+DB performance artırımı için postgresql.conf dosyasında (postgis_appdb dizini altında) bazı parametrelerin değiştirilmesi:
+
+  - shared_buffers = 1024MB
+  - work_mem = 256MB
+  - maintenance_work_mem = 256MB
+  - synchronous_commit = off
+  - wal_buffers = 32MB
