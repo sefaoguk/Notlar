@@ -1,3 +1,8 @@
 https://bugzilla.redhat.com/show_bug.cgi?id=1467669
 
 openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:2048 -out server.key
+
+
+
+
+sudo openssl req -new -newkey rsa:2048 -nodes -keyout yourcompany.com.key -out yourcompany.com.csr
