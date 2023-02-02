@@ -1,0 +1,15 @@
+https://developer.ibm.com/tutorials/docker-dev-db/
+
+Buradaki kaynakta MYSQL bir containerin icierisine girip sql komutrlari ile databasede islem yapmanin adimlari gosterilmistir
+
+
+
+  EXAMPLE:
+  
+    - docker run --name test-mysql -p 3306 -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:latest
+    - docker exec -ti --user mysql test-mysql bash
+    - cd
+    - mysql -P $PORTNUMBER(local portu olan 3306) --protocol=tcp -u root -p
+    - CREATE DATABASE test;
+    - CREATE TABLE test;
+
