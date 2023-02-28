@@ -1,0 +1,12 @@
+
+Sureklı olarak bır repoyu clonelamak ya da pullamak ıstersenız bunun ıcın her seferınde user ve token ısteyecektır. 
+Bunu kolaylaştırmak adına user ve tokenı önbellekte tutabiliriz ve sonrasında bu bilgileri girmeden işlemleri gerçekleştirebilriz.
+
+      - git config --global credential.helper cache
+      - git config --global credential.helper 'cache --timeout=3600'
+
+
+yukarıdaki ilk komut gıthuba giriş yaparken sizin user ve tokenınızı (credentials) önbellekte tutmasını sağlar.
+ikinci komut ile önbellekte kalma suresını belirtmektedır burada 1 saat olarak belirlenmiştir.
+
+
