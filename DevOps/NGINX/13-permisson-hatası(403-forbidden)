@@ -1,16 +1,35 @@
-Nginxte static folderlar yayınlanırken bazı durumlarda permisson hatası olabiliyor. Sadece dosya izinleri değiştirilse bile bu durum meydana gelebilmektedir.
+Bu sorunun birden cok nedeni ve birden cok cozumu bulunmaktadir. Bunlardan bir kacini aciklayacagim.
+
+1- Nedenlerden birisi nginx'in www-data userinin kullandiginiz mevcut userinizi tanimiyor olabilir. Ben bu durum icin 2 adet cozum buldum.
+
+     A-) Cozumu : nginx.conf dosyasindaki user kismini mevcut kullanmak istediginiz user ile degistirmek.
+       
+        - sudo nano /etc/nginx/nginx.conf   --> user www-data; kismindaki www-data userini kendi userinizi degistirin.
+        - sudo nginx -t
+        - sudo nginx -s reload
+
+     B-) Cozumu : Nginx kullanicisinin mevcut kullanilan user grubuna eklenmesi. Boylece hem nginx kullanicisi hem mevcut kullaniciniz kullanabilecektir.
+                  Kullaniciyi ekledikten sonra da nginx servisini restart etmeniz ya da yeniden reload etmeniz gerekmektedir. Asagidaki komutlari deneyebilirsiniz.
+
+      - usermod -aG ${USER} www-data
+      - sudo nginx -t
+      - sudo nginx -s reload
+
+
+2- Nginxte static folderlar yayınlanırken bazı durumlarda permisson hatası olabiliyor. Sadece dosya izinleri değiştirilse bile bu durum meydana gelebil2mektedir.
 Bunun için "/etc/nginx/nginx.conf" dosyasındaki user'ı (genelde - user www-data; - şeklindedir.) Mevcut sunucudaki user'ın grubuna eklemek gerekmektedir.
 
-Aşağıdaki komutlar sırasıyla uyarlanıp işlendiğinde sorun ortadan kalkacaktır.
+    Aşağıdaki komutlar da sırasıyla uyarlanıp işlendiğinde sorun ortadan kalkabilir.
+
+     - sudo -u www-data stat /username/test/static     -> Bu adım çalışıtrıldığında başarılı oldup olmadığı görülür.Permisson hatasının olduğunu burdan anlaşılabilir.
+     - gpasswd -a www-data username                    -> Bu adım da /etc/nginx/nginx.cof dosyasındaki user'ı mevcut sunucudaki user grubuna ekleme işlemidir.         
+     - chmod g+x /username && chmod g+x /username/test && chmod g+x /username/test/static -> Bu adınmda ise static folderın  tüm yollarına verilen izindir.
+
+    Bu işlemler adım adım gerçekleştiğinde permisson hatası bundan kaynaklanıyor ise hata ortadan kalkabilir.
+
+
+    Aşağıdaki linkte nasıl yapıldığı gösterilmektedir.
+    https://stackoverflow.com/questions/25774999/nginx-stat-failed-13-permission-denied
 
 
 
-1- sudo -u www-data stat /username/test/static     -> Bu adım çalışıtrıldığında başarılı oldup olmadığı görülür.Permisson hatasının olduğunu burdan anlaşılabilir.
-2- gpasswd -a www-data username                    -> Bu adım da /etc/nginx/nginx.cof dosyasındaki user'ı mevcut sunucudaki user grubuna ekleme işlemidir.         
-3- chmod g+x /username && chmod g+x /username/test && chmod g+x /username/test/static -> Bu adınmda ise static folderın  tüm yollarına verilen izindir.
-
-Bu işlemler adım adım gerçekleştiğinde permisson hatası bundan kaynaklanıyor ise hata ortadan kalkacaktır.
-
-
-Aşağıdaki linkte nasıl yapıldığı gösterilmektedir.
-https://stackoverflow.com/questions/25774999/nginx-stat-failed-13-permission-denied
