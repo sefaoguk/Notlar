@@ -1,0 +1,6 @@
+openssl genpkey -algorithm RSA -out root.key
+openssl req -new -x509 -key root.key -out root.crt 
+openssl genpkey -algorithm RSA -out domain.key
+openssl req -new -key domain.key -out domain.csr
+openssl x509 -req -in domain.csr -CA root.crt -CAkey root.key -CAcreateserial -out domain.crt -days 365
+cat domain.key domain.crt > domain.pem
