@@ -1,0 +1,18 @@
+
+Ubuntu isletim sisteminde openvpn default olarak gelmektedir. Bu vpni kullanabilmek icin bize 3 adet dosya verilmekte bunlar:
+    - .ca 
+    - .key
+    - ovpn
+   
+   bu dosyalari /etc/openvpn/client dizinine atarak asagidaki komut ile vpni terminalden calistirabilirsiniz.
+    
+    sudo /usr/sbin/openvpn --config /etc/openvpn/client/iscf01-TCP-21901.ovpn \
+      --ca /etc/openvpn/client/iscf01-TCP-21901-ca.crt \
+      --tls-auth /etc/openvpn/client/iscf01-TCP-21901-tls.key \
+      --auth-user-pass /etc/openvpn/client/credentials.txt
+      
+
+
+
+NOT:  Komutun daha kolay olmasi icin isterseniz ~/.bashrc dosyasina alias ekleyerek kisa yoldan vpni calistirabilirsiniz.
+      Credentials.txt icerisinde size verilen username ve password bulunmaktadir. Ustte username altta password olacak sekilde txt dosyasini olusturun.
