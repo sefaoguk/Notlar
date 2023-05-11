@@ -1,8 +1,7 @@
 # Buildx Install
 Dockerfile'in farkli islemcilerdeki platformlarda calisabilmesi icin dockerda buildx'in yuklu olmasi gerekmekte.
 Her ne kadar 18.x versiyonundan sonra varsayilan olarak yuklu geliyor olsa da localdeki mevcut surumde olmadigini gordum. 
-Yuklemek icin asagidaki adimlari deneyiniz.
-
+Yuklemek icin asagidaki adimlari deneyiniz:
     * sudo apt-get update;
     * sudo apt-get upgrade docker (ya da docker-ce,docker.io hangi paket kullaniliyorsa);
     * mkdir -p ~/.docker/cli-plugins;
