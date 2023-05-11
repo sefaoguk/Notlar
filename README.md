@@ -4,15 +4,15 @@ Her ne kadar 18.x versiyonundan sonra varsayilan olarak yuklu geliyor olsa da lo
 
 Yuklemek icin asagidaki adimlari deneyiniz:
 
-  * sudo apt-get update;
+  * sudo apt-get update
     
-  * sudo apt-get upgrade docker (ya da docker-ce,docker.io hangi paket kullaniliyorsa);
+  * sudo apt-get upgrade docker (ya da docker-ce,docker.io hangi paket kullaniliyorsa)
     
-  * mkdir -p ~/.docker/cli-plugins;
+  * mkdir -p ~/.docker/cli-plugins
     
-  * curl -SL https://github.com/docker/buildx/releases/download/v0.6.1/buildx-v0.6.1.linux-amd64 \ -o ~/.docker/cli-plugins/docker-buildx;
+  * curl -SL https://github.com/docker/buildx/releases/download/v0.6.1/buildx-v0.6.1.linux-amd64 \ -o ~/.docker/cli-plugins/docker-buildx
   
-  * chmod a+x ~/.docker/cli-plugins/docker-buildx;
+  * chmod a+x ~/.docker/cli-plugins/docker-buildx
 
 
 
