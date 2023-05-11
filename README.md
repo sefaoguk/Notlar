@@ -16,6 +16,8 @@ Yuklemek icin asagidaki adimlari deneyiniz:
 
 
 
+
+
 # Image Create and Push With Buildx 
 Buildx yuklendikten sonra eger imajiniz localinizde calisiyor ise asagidaki adimlarla uygulamayi clouda pushlayabilirsiniz.
 
