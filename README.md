@@ -14,9 +14,8 @@ Yuklemek icin asagidaki adimlari deneyiniz:
   
   * chmod a+x ~/.docker/cli-plugins/docker-buildx
 
-****
 
-# Image Create and Push With Buildx 
+# Image Create and Push
 Buildx yuklendikten sonra eger imajiniz localinizde calisiyor ise asagidaki adimlarla uygulamayi clouda pushlayabilirsiniz.
 
 Burada imaj olusturdugumuzda default buildx olarak amd64 kullanilmaktadir. Ondan dolayi yeni bir buildx create ediyoruz ve onun kullanilmasi --use parametresi ile saglanmaktadir.
