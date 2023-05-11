@@ -14,16 +14,14 @@ Yuklemek icin asagidaki adimlari deneyiniz:
   
   * chmod a+x ~/.docker/cli-plugins/docker-buildx
 
-
-
-
+****
 
 # Image Create and Push With Buildx 
 Buildx yuklendikten sonra eger imajiniz localinizde calisiyor ise asagidaki adimlarla uygulamayi clouda pushlayabilirsiniz.
 
 Burada imaj olusturdugumuzda default buildx olarak amd64 kullanilmaktadir. Ondan dolayi yeni bir buildx create ediyoruz ve onun kullanilmasi --use parametresi ile saglanmaktadir.
   * docker buildx create --name mybuilder --use;
- ****
+
 
 Islenilen cloud'a pushlanilmasi icin login islemi (github or dockerhub) 
   * echo "GITHUB_PERSONAL_ACCESS_TOKEN" | docker login ghcr.io -u GITHUB_USERNAME --password-stdin;
