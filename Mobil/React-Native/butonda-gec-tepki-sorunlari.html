@@ -1,0 +1,11 @@
+React-native'de touchopacity kullanildigi zaman tepkime olarak yavas geri donus alinabiliyor. Bunun yerine Pressable
+kullanilmasi daha hizli tepki alinmasini saglayabilir.
+
+
+<!-- Ek olarak eger buyuk bir resim datanizi listeliyorsaniz muhtemelen asagidaki sekilde render etmeyi dusunebilirsiniz. -->
+    -> <Pressable>
+    ->     <Image>
+    -> </Pressable>
+
+<!-- Ancak bu yapi 500,1000+ resimden sonra uygulamanizin yavaslamasina neden olacaktir.Bunu yerine FastImage kutuphanesini kullanabilirsiniz. Kendi icerisinde touch efekti oldugundan daha az component kullanilacak ve verileriniz daha hizli render edilecektir. -->
+    -> <FastImage onTouch={functio} />

@@ -1,0 +1,14 @@
+Andoridde api30 (11) den yukarida olan surumlerde dosya indirme gibi islemlerde isin talep etmeye gerek yoktur. Ancak onun altindaki surumlerde kullanicidan dosya yazma-okuma izni istenmelidir. Bunun icin eger yeni bir uygulama yaziliyor ise her iki surumu de goz onunde bulundurarak yazmak en dogru olacaktir.
+
+
+Asagidaki islem react-native'de dosya indirilmesini saglayan bir fonksiyonun icerisindeki sorgudur. Burada version 30dan asagida ise izin istemekte degil ise indirme islemine direkt giderek islemi tamamlamaktadir.
+<!-- 
+if (Platform.OS === 'android' && platformVersion < 30) {
+    const granted = await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE);
+
+    if (granted !== PermissionsAndroid.RESULTS.GRANTED) {
+      ToastAndroid.show('Permission denied!', ToastAndroid.SHORT);
+      return;
+    }
+  }
+-->
