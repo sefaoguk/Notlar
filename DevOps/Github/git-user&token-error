@@ -1,0 +1,3 @@
+Terminalde pull & push yaparken surekli github user ve github token soruyor ise asagidaki komutu girdikten sonra user ve token girilince sizin token ve user'inizi hatirlayacak ve bir daha sormayacak.
+    - git config --global credential.helper store
+    
