@@ -1,0 +1,12 @@
+User
+Failed to update apt cache: W:Updating from such a repository can't be done securely, and is therefore 
+disabled by default., W:See apt-secure(8) manpage for repository creation and user configuration details., 
+W:GPG error: http://repo.powerdns.com/ubuntu jammy-auth-47 InRelease: The following signatures couldn't be 
+verified because the public key is not available: NO_PUBKEY 1B0C6205FD380FBB, E:The repository
+'http://repo.powerdns.com/ubuntu jammy-auth-47 InRelease' is not signed.
+
+
+Bu hata ile karsilasiyorsaniz powerdns.gpg keyi 1B0C6205FD380FBB bunun ile uretilmesi gerekmektedir. Asagidaki curl komutu bunu saglamaktadir.
+
+curl https://repo.powerdns.com/FD380FBB-pub.asc | gpg --dearmor | gpg --no-default-keyring --keyring /usr/share/keyrings/powerdns.gpg --import
+echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/powerdns.gpg] http://repo.powerdns.com/ubuntu jammy-auth-47 main' > /etc/apt/sources.list.d/pdns.list
