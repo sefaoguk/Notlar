@@ -1,0 +1,24 @@
+vscodde'da debug atabilmek için 2 şey gereklidir.
+1 - VSCode'da react-native-tools yüklü olmalıdır.
+2 - proje dizininde iken .vscode dizinine girerek launch.json dosyasını düzenlemek gerekmektedir. Yoksa oluşturabilirsiniz.
+İçeriği aşağıdaki gibi olmalıdır. 
+
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Debug Android",
+			"cwd": "${workspaceFolder}",
+			"type": "reactnative",
+			"request": "launch",
+			"platform": "android"
+		},
+		{
+			"name": "Debug iOS",
+			"cwd": "${workspaceFolder}",
+			"type": "reactnative",
+			"request": "launch",
+			"platform": "ios"
+		}
+	]
+}
