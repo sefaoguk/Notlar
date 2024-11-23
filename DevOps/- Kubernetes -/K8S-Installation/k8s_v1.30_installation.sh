@@ -17,7 +17,7 @@ sudo apt-get update && sudo apt-get upgrade || error "Failed to update and upgra
 
 # Install Docker
 info "Installing Docker..."
-sudo apt install docker.io || error "Failed to install Docker"
+sudo apt install -y docker.io || error "Failed to install Docker"
 
 # Enable and start Docker service
 info "Enabling and starting Docker service..."
@@ -47,7 +47,7 @@ sudo sysctl --system || error "Failed to apply sysctl settings"
 
 # Install dependencies for Docker repository
 info "Installing Docker repository dependencies..."
-sudo apt-get install apt-transport-https ca-certificates curl software-properties-common || error "Failed to install dependencies"
+sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common || error "Failed to install dependencies"
 
 # Add Docker repository
 info "Adding Docker repository..."
@@ -56,7 +56,7 @@ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubun
 
 # Install Containerd
 info "Installing containerd..."
-sudo apt update && sudo apt install containerd.io || error "Failed to install containerd"
+sudo apt update && sudo apt install -y containerd.io || error "Failed to install containerd"
 
 # Configure containerd
 info "Configuring containerd..."
@@ -74,7 +74,7 @@ echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.
 
 # Install Kubernetes components
 info "Installing kubelet, kubeadm, and kubectl..."
-sudo apt-get update && sudo apt-get install kubelet kubeadm kubectl || error "Failed to install Kubernetes components"
+sudo apt-get update && sudo apt-get install -y kubelet kubeadm kubectl || error "Failed to install Kubernetes components"
 
 # Mark Kubernetes components to prevent accidental upgrades
 info "Marking kubelet, kubeadm, kubectl to hold versions..."
