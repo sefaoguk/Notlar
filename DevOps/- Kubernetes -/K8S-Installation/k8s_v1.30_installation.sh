@@ -13,11 +13,11 @@ error() {
 
 # Update package list and upgrade
 info "Updating package list and upgrading existing packages..."
-sudo apt-get update && sudo apt-get upgrade || error "Failed to update and upgrade packages"
+sudo apt-get update && sudo apt-get upgrade -y || error "Failed to update and upgrade packages"
 
 # Install Docker
 info "Installing Docker..."
-sudo apt install -y docker.io || error "Failed to install Docker"
+sudo apt install -y docker.io=24.0.7-0ubuntu2~22.04.1 || error "Failed to install Docker"
 
 # Enable and start Docker service
 info "Enabling and starting Docker service..."
@@ -56,7 +56,7 @@ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubun
 
 # Install Containerd
 info "Installing containerd..."
-sudo apt update && sudo apt install -y containerd.io || error "Failed to install containerd"
+sudo apt update && sudo apt install -y containerd.io=1.7.23-1  || error "Failed to install containerd"
 
 # Configure containerd
 info "Configuring containerd..."
@@ -74,7 +74,7 @@ echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.
 
 # Install Kubernetes components
 info "Installing kubelet, kubeadm, and kubectl..."
-sudo apt-get update && sudo apt-get install -y kubelet kubeadm kubectl || error "Failed to install Kubernetes components"
+sudo apt-get update && sudo apt-get install -y kubelet=1.30.1-1.1 kubeadm=1.30.1-1.1 kubectl=1.30.1-1.1 || error "Failed to install Kubernetes components"
 
 # Mark Kubernetes components to prevent accidental upgrades
 info "Marking kubelet, kubeadm, kubectl to hold versions..."
@@ -97,5 +97,9 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config || error "Failed to set ownershi
 # Apply Calico network plugin
 info "Applying Calico network plugin..."
 kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.25.0/manifests/calico.yaml || error "Failed to apply Calico network plugin"
+
+# Alias 'k' is a shortcut for 'kubectl' command"
+echo 'alias k="kubectl"' | cat - ~/.bashrc > temp && mv temp ~/.bashrc
+source ~/.bashrc
 
 info "Kubernetes setup completed successfully!"
