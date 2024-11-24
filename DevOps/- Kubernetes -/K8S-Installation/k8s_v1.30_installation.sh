@@ -14,10 +14,19 @@ error() {
 # Update package list and upgrade
 info "Updating package list and upgrading existing packages..."
 sudo apt-get update && sudo apt-get upgrade -y || error "Failed to update and upgrade packages"
+sudo apt-get install -y \
+  ca-certificates \
+  curl \
+  gnupg \
+  lsb-release
 
 # Install Docker
 info "Installing Docker..."
-sudo apt install -y docker.io=24.0.7-0ubuntu2~22.04.1 || error "Failed to install Docker"
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+
+sudo apt install -y docker-ce=5:27.3.1-1~ubuntu.22.04~jammy docker-ce-cli=5:27.3.1-1~ubuntu.22.04~jammy containerd.io=1.7.23-1|| error "Failed to install Docker"
 
 # Enable and start Docker service
 info "Enabling and starting Docker service..."
@@ -98,8 +107,11 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config || error "Failed to set ownershi
 info "Applying Calico network plugin..."
 kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.25.0/manifests/calico.yaml || error "Failed to apply Calico network plugin"
 
+
 # Alias 'k' is a shortcut for 'kubectl' command"
+info "Applying kubectl shortcut 'k'..."
 echo 'alias k="kubectl"' | cat - ~/.bashrc > temp && mv temp ~/.bashrc
-source ~/.bashrc
+sleep 1
+sudo source ~/.bashrc
 
 info "Kubernetes setup completed successfully!"
